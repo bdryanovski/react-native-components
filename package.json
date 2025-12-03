@@ -1,0 +1,112 @@
+{
+  "name": "@dryanovski/react-native-components",
+  "version": "1.0.0",
+  "description": "Collection of reusable React Native components for building mobile applications.",
+  "main": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
+  "source": "./src/index.tsx",
+  "exports": {
+    ".": {
+      "source": "./src/index.tsx",
+      "types": "./lib/typescript/src/index.d.ts",
+      "default": "./lib/module/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "lib"
+  ],
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "clean": "del-cli lib",
+    "prepare": "bob build"
+  },
+  "keywords": [
+    "react-native",
+    "ios",
+    "components",
+    "android"
+  ],
+  "devDependencies": {
+    "@eslint/compat": "^1.2.7",
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.22.0",
+    "@react-native-community/cli": "latest",
+    "@react-native/babel-preset": "0.78.2",
+    "@react-native/eslint-config": "^0.78.0",
+    "@types/jest": "^29.5.5",
+    "@types/react": "^19.0.12",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "babel-plugin-transform-remove-imports": "^1.8.0",
+    "del-cli": "^5.1.0",
+    "eslint": "^9.22.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "jest": "^29.7.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-builder-bob": "^0.40.12",
+    "react-native-gesture-handler": "^2.28.0",
+    "react-native-reanimated": "~4.1.1",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": "~4.16.0",
+    "react-native-svg": "15.12.1",
+    "react-native-worklets": "0.5.1",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-native": ">=0.81.0",
+    "react-native-reanimated": "~4.1.1",
+    "react-native-safe-area-context": "~5.6.0",
+    "react-native-screens": ">=4",
+    "react-native-svg": "^15.12.1",
+    "react-native-worklets": "0.5.1"
+  },
+  "jest": {
+    "preset": "react-native",
+    "passWithNoTests": true,
+    "modulePathIgnorePatterns": [
+      "<rootDir>/example/node_modules",
+      "<rootDir>/lib/"
+    ]
+  },
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false,
+    "plugins": [
+      "prettier-plugin-organize-imports"
+    ]
+  },
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "module",
+        {
+          "esm": true,
+          "configFile": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
+      ]
+    ]
+  },
+  "create-react-native-library": {
+    "languages": "js",
+    "type": "library",
+    "version": "0.51.1"
+  }
+}
