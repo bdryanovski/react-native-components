@@ -1,10 +1,9 @@
-import { fixupConfigRules } from '@eslint/compat';
-import { FlatCompat } from '@eslint/eslintrc';
+import {fixupConfigRules} from '@eslint/compat';
+import {FlatCompat} from '@eslint/eslintrc';
 import js from '@eslint/js';
 import prettier from 'eslint-plugin-prettier';
-import { defineConfig } from 'eslint/config';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import {fileURLToPath} from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,10 +13,10 @@ const compat = new FlatCompat({
   allConfig: js.configs.all,
 });
 
-export default defineConfig([
+export default [
+  ...fixupConfigRules(compat.extends('@react-native', 'prettier')),
   {
-    extends: fixupConfigRules(compat.extends('@react-native', 'prettier')),
-    plugins: { prettier },
+    plugins: {prettier},
     rules: {
       'react/react-in-jsx-scope': 'off',
       'prettier/prettier': [
@@ -34,6 +33,22 @@ export default defineConfig([
     },
   },
   {
+    files: ['**/*.test.{js,jsx,ts,tsx}', 'jest.setup.js', 'jest.config.js'],
+    languageOptions: {
+      globals: {
+        jest: 'readonly',
+        expect: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        test: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly',
+      },
+    },
+  },
+  {
     ignores: ['node_modules/', 'lib/'],
   },
-]);
+];
