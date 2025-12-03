@@ -1,6 +1,6 @@
 {
   "name": "@dryanovski/react-native-components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Collection of reusable React Native components for building mobile applications.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -114,3 +114,4 @@
     "eslint-plugin-react-native": "^5.0.0"
   }
 }
+
