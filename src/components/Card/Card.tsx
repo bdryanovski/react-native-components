@@ -1,4 +1,6 @@
+import { forwardRef } from 'react';
 import { View } from 'react-native';
+import type { ViewRef } from '../../types/general.types';
 import Styles from './styles';
 import type { CardProps } from './types';
 
@@ -12,13 +14,14 @@ import type { CardProps } from './types';
  *   <Text>This is a card</Text>
  * </Card>
  */
-export const Card: React.FC<CardProps> = ({ children, style, ...props }) => {
+export const Card = forwardRef<ViewRef, CardProps>((props, ref) => {
+  const { children, style } = props;
   return (
-    <View style={[Styles.container, style]} {...props}>
+    <View ref={ref} style={[Styles.container, style]} {...props}>
       {children}
     </View>
   );
-};
+});
 
 Card.displayName = 'Card';
 
