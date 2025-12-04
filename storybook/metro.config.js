@@ -1,5 +1,5 @@
 const path = require('path');
-const {getDefaultConfig} = require('expo/metro-config');
+const { getDefaultConfig } = require('expo/metro-config');
 const withStorybook = require('@storybook/react-native/metro/withStorybook');
 
 // Get the project root
@@ -9,9 +9,7 @@ const workspaceRoot = path.resolve(projectRoot, '..');
 const defaultConfig = getDefaultConfig(projectRoot);
 
 // Watch parent directory ONLY for src files (not node_modules)
-defaultConfig.watchFolders = [
-  path.resolve(workspaceRoot, 'src'),
-];
+defaultConfig.watchFolders = [path.resolve(workspaceRoot, 'src')];
 
 // Use ONLY local node_modules
 defaultConfig.resolver.nodeModulesPaths = [
