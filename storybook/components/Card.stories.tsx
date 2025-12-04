@@ -72,6 +72,15 @@ export const Basic = () => (
   </Card>
 );
 
+export const Transparent = () => (
+  <Card variant="transparent">
+    <Text style={styles.title}>Transparent Card</Text>
+    <Text style={styles.description}>
+      This card has a transparent background with a border.
+    </Text>
+  </Card>
+);
+
 export const WithImage = () => (
   <Card>
     <View style={styles.imageContainer}>

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import { View } from 'react-native';
 import type { ViewRef } from '../../types/general.types';
+import Surface from '../Surface/Surface';
 import Styles from './styles';
 import type { CardProps } from './types';
 
@@ -15,11 +15,16 @@ import type { CardProps } from './types';
  * </Card>
  */
 export const Card = forwardRef<ViewRef, CardProps>((props, ref) => {
-  const { children, style } = props;
+  const { children, variant = 'default', style = {}, ...rest } = props;
   return (
-    <View ref={ref} style={[Styles.container, style]} {...props}>
+    <Surface
+      ref={ref}
+      variant={variant}
+      style={[Styles.container, style]}
+      {...rest}
+    >
       {children}
-    </View>
+    </Surface>
   );
 });
 

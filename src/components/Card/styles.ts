@@ -1,7 +1,6 @@
 import Style from '../../utils/Style';
 
 const DEFAULT_CARD = {
-  card_background_color: '#fff',
   card_border_radius: 8,
   card_padding: 16,
   card_shadow_color: '#000',
@@ -13,7 +12,6 @@ const DEFAULT_CARD = {
 
 export const Styles = Style.create({
   container: {
-    backgroundColor: DEFAULT_CARD.card_background_color,
     borderRadius: DEFAULT_CARD.card_border_radius,
     padding: DEFAULT_CARD.card_padding,
     shadowColor: DEFAULT_CARD.card_shadow_color,

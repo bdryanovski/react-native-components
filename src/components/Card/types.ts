@@ -1,4 +1,5 @@
 import type { ViewProps, ViewStyle } from 'react-native';
+import type { SurfaceVariants } from '../Surface/types';
 
 /**
  * Props for the Card component
@@ -12,4 +13,6 @@ export interface CardProps extends ViewProps {
    * Custom styles for the Card container
    */
   style?: ViewStyle;
+
+  variant?: SurfaceVariants;
 }
