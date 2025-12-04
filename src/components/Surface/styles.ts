@@ -6,6 +6,8 @@ export const DEFAULT_SURFACE = {
   transparent_background_color: 'transparent',
 };
 
+export type SurfaceStyleVariables = typeof DEFAULT_SURFACE;
+
 export const Styles = Style.create({
   base: {},
 

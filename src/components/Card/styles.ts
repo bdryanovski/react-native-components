@@ -10,6 +10,8 @@ export const DEFAULT_CARD = {
   elevation: 3,
 };
 
+export type CardStyleVariables = typeof DEFAULT_CARD;
+
 export const Styles = Style.create({
   container: {
     borderRadius: DEFAULT_CARD.border_radius,
