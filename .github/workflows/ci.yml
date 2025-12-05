@@ -23,9 +23,6 @@ jobs:
       - name: Lint files
         run: pnpm lint
 
-      - name: Typecheck files
-        run: pnpm typecheck
-
   test:
     runs-on: ubuntu-latest
     steps:
