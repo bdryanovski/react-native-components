@@ -8,6 +8,7 @@ runs:
       uses: pnpm/action-setup@v4
       with:
         version: 9.14.4
+        standalone: true
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
