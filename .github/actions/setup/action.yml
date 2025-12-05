@@ -7,7 +7,7 @@ runs:
     - name: Setup pnpm
       uses: pnpm/action-setup@v4
       with:
-        version: 9
+        version: 9.14.4
 
     - name: Setup Node.js
       uses: actions/setup-node@v4
@@ -15,32 +15,6 @@ runs:
         node-version-file: .nvmrc
         cache: 'pnpm'
 
-    - name: Get pnpm store directory
-      id: pnpm-cache
-      shell: bash
-      run: |
-        echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-    - name: Restore dependencies
-      uses: actions/cache/restore@v4
-      with:
-        path: |
-          ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          **/node_modules
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
-
     - name: Install dependencies
-      if: steps.pnpm-cache.outputs.cache-hit != 'true'
       run: pnpm install --frozen-lockfile
       shell: bash
-
-    - name: Cache dependencies
-      if: steps.pnpm-cache.outputs.cache-hit != 'true'
-      uses: actions/cache/save@v4
-      with:
-        path: |
-          ${{ steps.pnpm-cache.outputs.STORE_PATH }}
-          **/node_modules
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
