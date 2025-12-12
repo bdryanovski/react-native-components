@@ -6,6 +6,8 @@ import type {
   ThemeVariants,
 } from './types';
 
+import * as Font from 'expo-font';
+
 /**
  * Create a ThemeContext with default value null
  * @type {React.Context<ThemeContextType | null>}
@@ -66,6 +68,24 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     },
     [deviceColorscheme]
   );
+
+  useEffect(() => {
+    (async function loadAsyncFonts() {
+      try {
+        await Font.loadAsync({
+          CodanRegular: require('../assets/fonts/CodanRegular.ttf'),
+          CodanBold: require('../assets/fonts/CodanBold.ttf'),
+          CodanBook: require('../assets/fonts/CodanBook.ttf'),
+          CodanLight: require('../assets/fonts/CodanLight.ttf'),
+          CodanMedium: require('../assets/fonts/CodanMedium.ttf'),
+        });
+      } catch (e) {
+        console.warn('Error loading fonts:', e);
+      } finally {
+        console.log('Theme Fonts loaded');
+      }
+    })();
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme: currentTheme, changeTheme }}>
