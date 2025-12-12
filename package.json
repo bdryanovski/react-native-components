@@ -1,6 +1,6 @@
 {
   "name": "@dryanovski/react-native-components",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Collection of reusable React Native components for building mobile applications.",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
