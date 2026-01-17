@@ -1,4 +1,7 @@
 // Export Components
+export * from './components/Accordion/Accordion';
+export * from './components/Accordion/AccordionItem';
+export * from './components/Collapse';
 export * from './components/Button/Button';
 export * from './components/Button/DangerButton';
 export * from './components/Button/GhostButton';
@@ -11,6 +14,8 @@ export * from './components/Layout/VStack';
 export * from './components/Surface/Surface';
 
 // types
+export * from './components/Accordion/type';
+export * from './components/Collapse/types';
 export * from './components/Button/types';
 export * from './components/Card/types';
 export * from './components/Divider/types';
