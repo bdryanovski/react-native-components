@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentRef } from 'react';
+import { forwardRef } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import Styles from './style';
 import type {
@@ -7,8 +7,6 @@ import type {
   ButtonSize,
   ButtonVariant,
 } from './types';
-
-export type ButtonBaseRef = ComponentRef<typeof Button>;
 
 /**
  * A customizable button component that supports different variants and sizes.

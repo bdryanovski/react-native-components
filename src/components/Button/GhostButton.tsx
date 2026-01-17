@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import { Button, type ButtonBaseRef } from './Button';
-import type { ButtonBaseProps } from './types';
+import { Button } from './Button';
+import type { ButtonBaseProps, ButtonBaseRef } from './types';
 
 export const GhostButton = forwardRef<ButtonBaseRef, ButtonBaseProps>(
   (props, ref) => {

@@ -14,7 +14,7 @@
     "**/*.tsx",
     ".storybook/**/*",
     "../src/**/*"
-  ],
+, "components/styles.sts"  ],
   "exclude": [
     "node_modules"
   ]

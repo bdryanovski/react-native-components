@@ -6,14 +6,26 @@ import type {
   TouchableOpacityProps,
   ViewStyle,
 } from 'react-native';
+import type Button from './Button';
 
 /**
  * Ref type for the Button component
  */
 export type ButtonRef = ComponentRef<typeof TouchableOpacity>;
 
+/**
+ * The root ref type for the Button component
+ */
+export type ButtonBaseRef = ComponentRef<typeof Button>;
+
+/**
+ * The variant types for the Button component
+ */
 export type ButtonVariant = 'primary' | 'secondary' | 'danger' | 'ghost';
 
+/**
+ * Button size types
+ */
 export type ButtonSize = 'small' | 'medium' | 'large';
 
 export interface ButtonBaseProps extends Omit<TouchableOpacityProps, 'style'> {
