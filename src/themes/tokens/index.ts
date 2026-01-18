@@ -6,18 +6,18 @@
  */
 
 export * from './colors.token';
-export * from './spacing.token';
-export * from './size.token';
 export * from './radius.token';
-export * from './typography.token';
 export * from './shadow.token';
+export * from './size.token';
+export * from './spacing.token';
+export * from './typography.token';
 
 import { colorTokens } from './colors.token';
-import { spacingTokens } from './spacing.token';
-import { sizeTokens } from './size.token';
 import { radiusTokens } from './radius.token';
-import { typographyTokens } from './typography.token';
 import { shadowTokens } from './shadow.token';
+import { sizeTokens } from './size.token';
+import { spacingTokens } from './spacing.token';
+import { typographyTokens } from './typography.token';
 
 /**
  * All design tokens combined
@@ -32,4 +32,3 @@ export const designTokens = {
 } as const;
 
 export type DesignTokens = typeof designTokens;
-

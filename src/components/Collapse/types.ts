@@ -1,5 +1,8 @@
 import type { StyleProp, ViewStyle } from 'react-native';
-import type { WithSpringConfig, WithTimingConfig } from 'react-native-reanimated';
+import type {
+  WithSpringConfig,
+  WithTimingConfig,
+} from 'react-native-reanimated';
 
 export type AnimationType = 'timing' | 'spring';
 
@@ -59,4 +62,3 @@ export type CollapseProps = {
    */
   onMeasured?: (height: number) => void;
 };
-

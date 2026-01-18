@@ -120,4 +120,3 @@ export const colorTokens = {
 } as const;
 
 export type ColorTokens = typeof colorTokens;
-

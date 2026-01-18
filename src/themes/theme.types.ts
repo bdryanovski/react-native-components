@@ -4,8 +4,8 @@
  * Type definitions for the complete theme system.
  */
 
-import type { DesignTokens } from './tokens';
 import type { ComponentAliases } from './aliases';
+import type { DesignTokens } from './tokens';
 import type { DeepPartial } from './utils/deepMerge';
 
 /**
@@ -34,4 +34,3 @@ export type ThemeConfig = {
  * Available theme names
  */
 export type ThemeName = 'light' | 'dark' | string;
-

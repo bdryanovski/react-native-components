@@ -7,7 +7,7 @@ import type { Theme } from '../../themes/theme.types';
 export const useButtonStyles = () => {
   return useThemedStyles((theme: Theme) => {
     const { button } = theme.components;
-    const { spacing, typography, radius } = theme.tokens;
+    const { spacing, typography } = theme.tokens;
 
     return {
       // Base styles

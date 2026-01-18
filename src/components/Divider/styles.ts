@@ -1,7 +1,6 @@
-import { useColors } from '../../providers/hooks';
+import type { ViewStyle } from 'react-native';
 import { useThemedStyles } from '../../providers/hooks';
 import type { Theme } from '../../themes/theme.types';
-import type { ViewStyle } from 'react-native';
 
 /**
  * Divider styles using the new theme system
@@ -11,8 +10,6 @@ export const useDividerStyles = (
   thickness?: number,
   length?: string | number
 ) => {
-  const colors = useColors();
-
   return useThemedStyles((theme: Theme) => {
     const { divider } = theme.components;
     const actualThickness = thickness ?? divider.thickness;
@@ -22,9 +19,11 @@ export const useDividerStyles = (
       backgroundColor: divider.color,
     } as ViewStyle;
 
-    const orientationStyle = (orientation === 'vertical'
-      ? { width: actualThickness, height: actualLength }
-      : { height: actualThickness, width: actualLength }) as ViewStyle;
+    const orientationStyle = (
+      orientation === 'vertical'
+        ? { width: actualThickness, height: actualLength }
+        : { height: actualThickness, width: actualLength }
+    ) as ViewStyle;
 
     return {
       divider: {
@@ -34,4 +33,3 @@ export const useDividerStyles = (
     };
   });
 };
-

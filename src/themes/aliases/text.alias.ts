@@ -66,4 +66,3 @@ export const createTextAliases = (tokens: {
     color: tokens.color.error[600],
   },
 });
-

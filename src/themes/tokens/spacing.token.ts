@@ -21,4 +21,3 @@ export const spacingTokens = {
 
 export type SpacingTokens = typeof spacingTokens;
 export type SpacingToken = keyof typeof spacingTokens;
-

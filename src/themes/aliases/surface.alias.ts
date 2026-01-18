@@ -38,4 +38,3 @@ export const createSurfaceAliases = (tokens: {
   },
   borderRadius: tokens.radius.md,
 });
-

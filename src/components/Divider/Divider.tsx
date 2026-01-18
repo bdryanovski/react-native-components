@@ -1,9 +1,8 @@
 import { forwardRef } from 'react';
 import { View } from 'react-native';
 import type { ViewRef } from '../../types/general.types';
-import { useColors } from '../../providers/hooks';
-import type { DividerProps } from './types';
 import { useDividerStyles } from './styles';
+import type { DividerProps } from './types';
 
 /**
  * Divider component for visual separation
@@ -29,7 +28,6 @@ export const Divider = forwardRef<ViewRef, DividerProps>((props, ref) => {
     ...rest
   } = props;
 
-  const colors = useColors();
   const styles = useDividerStyles(orientation, thickness, length);
 
   // Allow custom color to override theme color

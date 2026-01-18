@@ -5,9 +5,9 @@
  */
 
 import type { ColorTokens } from '../tokens/colors.token';
-import type { SpacingTokens } from '../tokens/spacing.token';
 import type { RadiusTokens } from '../tokens/radius.token';
 import type { ShadowTokens } from '../tokens/shadow.token';
+import type { SpacingTokens } from '../tokens/spacing.token';
 
 export type CardAliases = {
   backgroundColor: string;
@@ -40,4 +40,3 @@ export const createCardAliases = (tokens: {
   padding: tokens.spacing.lg,
   shadow: tokens.shadow.sm,
 });
-

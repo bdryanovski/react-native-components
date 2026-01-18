@@ -4,8 +4,8 @@
  * Utility hooks for accessing theme values in components.
  */
 
-import { useTheme } from './ThemeProvider';
 import type { Theme } from '../themes/theme.types';
+import { useTheme } from './ThemeProvider';
 
 /**
  * Hook to access design tokens
@@ -164,4 +164,3 @@ export const useThemedStyles = <T extends Record<string, any>>(
   const { theme } = useTheme();
   return styleFactory(theme);
 };
-

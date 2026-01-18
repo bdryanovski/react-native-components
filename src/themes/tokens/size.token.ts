@@ -17,4 +17,3 @@ export const sizeTokens = {
 
 export type SizeTokens = typeof sizeTokens;
 export type SizeToken = keyof typeof sizeTokens;
-

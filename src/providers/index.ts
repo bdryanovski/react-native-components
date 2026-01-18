@@ -4,7 +4,6 @@
  * Export all provider-related functionality.
  */
 
+export * from './hooks';
 export * from './ThemeProvider';
 export * from './types';
-export * from './hooks';
-

@@ -4,11 +4,11 @@
  * Factory function to create custom themes with partial overrides.
  */
 
-import { lightTheme } from './presets/light.theme';
-import { darkTheme } from './presets/dark.theme';
-import type { Theme, ThemeOverride, ThemeConfig } from './theme.types';
-import { deepMerge } from './utils/deepMerge';
 import { createComponentAliases } from './aliases';
+import { darkTheme } from './presets/dark.theme';
+import { lightTheme } from './presets/light.theme';
+import type { Theme, ThemeConfig, ThemeOverride } from './theme.types';
+import { deepMerge } from './utils/deepMerge';
 
 /**
  * Create a custom theme by merging overrides with a base theme
@@ -46,9 +46,12 @@ export function createTheme(
   overrides?: ThemeOverride
 ): Theme {
   // Get the base theme
-  const base = typeof baseTheme === 'string'
-    ? baseTheme === 'dark' ? darkTheme : lightTheme
-    : baseTheme;
+  const base =
+    typeof baseTheme === 'string'
+      ? baseTheme === 'dark'
+        ? darkTheme
+        : lightTheme
+      : baseTheme;
 
   // If no overrides, return base theme
   if (!overrides) {
@@ -91,4 +94,3 @@ export function createTheme(
 export function createThemeFromConfig(config: ThemeConfig): Theme {
   return createTheme('light', config.overrides);
 }
-

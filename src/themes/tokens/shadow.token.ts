@@ -51,4 +51,3 @@ export const shadowTokens = {
 
 export type ShadowTokens = typeof shadowTokens;
 export type ShadowToken = keyof typeof shadowTokens;
-

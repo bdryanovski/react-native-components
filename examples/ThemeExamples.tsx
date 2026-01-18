@@ -5,16 +5,16 @@
  */
 
 import React, { useState } from 'react';
-import { View, Text, ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
+import { Button } from '../src/components/Button/Button';
 import { ThemeProvider, createTheme } from '../src/providers';
 import {
-  useTheme,
   useColors,
-  useSpacing,
-  useThemedStyles,
   useIsDarkTheme,
+  useSpacing,
+  useTheme,
+  useThemedStyles,
 } from '../src/providers/hooks';
-import { Button } from '../src/components/Button/Button';
 
 // ============================================================================
 // Example 1: Basic Usage with Built-in Themes
@@ -347,7 +347,9 @@ export function CompleteAppExample() {
           <ThemeSwitcherExample />
 
           <View style={{ marginTop: 30 }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}>
+            <Text
+              style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}
+            >
               Buttons
             </Text>
             <View style={{ gap: 10 }}>
@@ -360,7 +362,9 @@ export function CompleteAppExample() {
           </View>
 
           <View style={{ marginTop: 30 }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}>
+            <Text
+              style={{ fontSize: 20, fontWeight: 'bold', marginBottom: 10 }}
+            >
               Sizes
             </Text>
             <View style={{ gap: 10 }}>
@@ -382,4 +386,3 @@ export function CompleteAppExample() {
     </ThemeProvider>
   );
 }
-

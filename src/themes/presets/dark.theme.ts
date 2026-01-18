@@ -4,11 +4,10 @@
  * Dark theme with overridden colors for dark mode.
  */
 
-import { designTokens, colorTokens } from '../tokens';
 import { createComponentAliases } from '../aliases';
 import type { Theme, ThemeOverride } from '../theme.types';
+import { colorTokens, designTokens } from '../tokens';
 import { deepMerge } from '../utils/deepMerge';
-import { lightTheme } from './light.theme';
 
 /**
  * Dark theme color overrides
@@ -71,4 +70,3 @@ export const darkTheme: Theme = {
   tokens: darkTokens,
   components: createComponentAliases(darkTokens),
 };
-

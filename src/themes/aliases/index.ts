@@ -7,21 +7,21 @@
 
 export * from './button.alias';
 export * from './card.alias';
+export * from './divider.alias';
 export * from './surface.alias';
 export * from './text.alias';
-export * from './divider.alias';
 
 import type { ButtonAliases } from './button.alias';
 import type { CardAliases } from './card.alias';
+import type { DividerAliases } from './divider.alias';
 import type { SurfaceAliases } from './surface.alias';
 import type { TextAliases } from './text.alias';
-import type { DividerAliases } from './divider.alias';
 
 import { createButtonAliases } from './button.alias';
 import { createCardAliases } from './card.alias';
+import { createDividerAliases } from './divider.alias';
 import { createSurfaceAliases } from './surface.alias';
 import { createTextAliases } from './text.alias';
-import { createDividerAliases } from './divider.alias';
 
 import type { DesignTokens } from '../tokens';
 
@@ -39,11 +39,12 @@ export type ComponentAliases = {
 /**
  * Create all component aliases from design tokens
  */
-export const createComponentAliases = (tokens: DesignTokens): ComponentAliases => ({
+export const createComponentAliases = (
+  tokens: DesignTokens
+): ComponentAliases => ({
   button: createButtonAliases(tokens),
   card: createCardAliases(tokens),
   surface: createSurfaceAliases(tokens),
   text: createTextAliases(tokens),
   divider: createDividerAliases(tokens),
 });
-

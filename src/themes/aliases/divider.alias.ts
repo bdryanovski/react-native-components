@@ -26,4 +26,3 @@ export const createDividerAliases = (tokens: {
   marginVertical: tokens.spacing.md,
   marginHorizontal: tokens.spacing.none,
 });
-
