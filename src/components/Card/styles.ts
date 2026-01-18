@@ -1,27 +1,26 @@
-import Style from '../../utils/Style';
+import { useThemedStyles } from '../../providers/hooks';
+import type { Theme } from '../../themes/theme.types';
 
-export const DEFAULT_CARD = {
-  border_radius: 8,
-  padding: 16,
-  shadow_color: '#000',
-  shadow_offset: { width: 0, height: 2 },
-  shadow_opacity: 0.1,
-  shadow_radius: 4,
-  elevation: 3,
+/**
+ * Card styles using the new theme system
+ */
+export const useCardStyles = () => {
+  return useThemedStyles((theme: Theme) => {
+    const { card } = theme.components;
+
+    return {
+      container: {
+        borderRadius: card.borderRadius,
+        padding: card.padding,
+        shadowColor: card.shadow.shadowColor,
+        shadowOffset: card.shadow.shadowOffset,
+        shadowOpacity: card.shadow.shadowOpacity,
+        shadowRadius: card.shadow.shadowRadius,
+        elevation: card.shadow.elevation,
+        borderWidth: card.borderWidth,
+        borderColor: card.borderColor,
+        backgroundColor: card.backgroundColor,
+      },
+    };
+  });
 };
-
-export type CardStyleVariables = typeof DEFAULT_CARD;
-
-export const Styles = Style.create({
-  container: {
-    borderRadius: DEFAULT_CARD.border_radius,
-    padding: DEFAULT_CARD.padding,
-    shadowColor: DEFAULT_CARD.shadow_color,
-    shadowOffset: DEFAULT_CARD.shadow_offset,
-    shadowOpacity: DEFAULT_CARD.shadow_opacity,
-    shadowRadius: DEFAULT_CARD.shadow_radius,
-    elevation: DEFAULT_CARD.elevation,
-  },
-});
-
-export default Styles;

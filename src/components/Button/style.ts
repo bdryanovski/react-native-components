@@ -1,76 +1,87 @@
-import Style from '../../utils/Style';
+import { useThemedStyles } from '../../providers/hooks';
+import type { Theme } from '../../themes/theme.types';
 
-export const DEFAULT_BUTTON = {
-  primary_background_color: '#007bff',
-  primary_text_color: '#ffffff',
+/**
+ * Button styles using the new theme system
+ */
+export const useButtonStyles = () => {
+  return useThemedStyles((theme: Theme) => {
+    const { button } = theme.components;
+    const { spacing, typography, radius } = theme.tokens;
 
-  secondary_background_color: '#6c757d',
-  secondary_text_color: '#ffffff',
+    return {
+      // Base styles
+      _base: {
+        borderRadius: button.borderRadius,
+        alignItems: 'center' as const,
+        justifyContent: 'center' as const,
+        flexDirection: 'row' as const,
+        gap: spacing.sm,
+        borderWidth: button.borderWidth,
+      },
 
-  danger_background_color: '#dc3545',
-  danger_text_color: '#ffffff',
+      _disabled: {
+        opacity: 0.6,
+      },
 
-  ghost_background_color: 'transparent',
-  ghost_text_color: '#007bff',
+      // Size variants
+      small: {
+        paddingVertical: button.sizes.small.paddingVertical,
+        paddingHorizontal: button.sizes.small.paddingHorizontal,
+      },
+      medium: {
+        paddingVertical: button.sizes.medium.paddingVertical,
+        paddingHorizontal: button.sizes.medium.paddingHorizontal,
+      },
+      large: {
+        paddingVertical: button.sizes.large.paddingVertical,
+        paddingHorizontal: button.sizes.large.paddingHorizontal,
+      },
+
+      // Text base
+      _text: {
+        fontWeight: typography.fontWeights.medium,
+      },
+
+      // Text variants
+      text_primary: {
+        color: button.primary.textColor,
+        fontSize: button.sizes.medium.fontSize,
+        lineHeight: button.sizes.medium.lineHeight,
+      },
+      text_secondary: {
+        color: button.secondary.textColor,
+        fontSize: button.sizes.medium.fontSize,
+        lineHeight: button.sizes.medium.lineHeight,
+      },
+      text_danger: {
+        color: button.danger.textColor,
+        fontSize: button.sizes.medium.fontSize,
+        lineHeight: button.sizes.medium.lineHeight,
+      },
+      text_ghost: {
+        color: button.ghost.textColor,
+        fontSize: button.sizes.medium.fontSize,
+        lineHeight: button.sizes.medium.lineHeight,
+      },
+
+      // Button variants
+      primary: {
+        backgroundColor: button.primary.backgroundColor,
+        borderColor: button.primary.borderColor,
+      },
+      secondary: {
+        backgroundColor: button.secondary.backgroundColor,
+        borderColor: button.secondary.borderColor,
+      },
+      danger: {
+        backgroundColor: button.danger.backgroundColor,
+        borderColor: button.danger.borderColor,
+      },
+      ghost: {
+        backgroundColor: button.ghost.backgroundColor,
+        borderColor: button.ghost.borderColor,
+      },
+    };
+  });
 };
-
-export type ButtonStyleVariables = typeof DEFAULT_BUTTON;
-
-export const Styles = Style.create({
-  _base: {
-    paddingVertical: 12,
-    paddingHorizontal: 24,
-    borderRadius: 6,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    gap: 10,
-  },
-
-  _disabled: {
-    opacity: 0.6,
-  },
-
-  small: {
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-  },
-  medium: {
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-  },
-  large: {
-    paddingVertical: 16,
-    paddingHorizontal: 24,
-  },
-
-  _text: {},
-
-  text_primary: {
-    color: DEFAULT_BUTTON.primary_text_color,
-  },
-  text_secondary: {
-    color: DEFAULT_BUTTON.secondary_text_color,
-  },
-  text_danger: {
-    color: DEFAULT_BUTTON.danger_text_color,
-  },
-  text_ghost: {
-    color: DEFAULT_BUTTON.ghost_text_color,
-  },
-
-  primary: {
-    backgroundColor: DEFAULT_BUTTON.primary_background_color,
-  },
-  secondary: {
-    backgroundColor: DEFAULT_BUTTON.secondary_background_color,
-  },
-  danger: {
-    backgroundColor: DEFAULT_BUTTON.danger_background_color,
-  },
-  ghost: {
-    backgroundColor: DEFAULT_BUTTON.ghost_background_color,
-  },
-});
-
-export default Styles;

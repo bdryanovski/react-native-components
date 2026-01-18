@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import Styles from './style';
+import { useButtonStyles } from './style';
 import type {
   ButtonBaseProps,
   ButtonRef,
@@ -10,7 +10,24 @@ import type {
 
 /**
  * A customizable button component that supports different variants and sizes.
- * @return A TouchableOpacity button with text.
+ * Uses the theme system for consistent styling.
+ *
+ * @example
+ * // Basic usage
+ * <Button title="Click me" onPress={() => console.log('clicked')} />
+ *
+ * @example
+ * // With variant and size
+ * <Button
+ *   title="Delete"
+ *   variant="danger"
+ *   size="large"
+ *   onPress={handleDelete}
+ * />
+ *
+ * @example
+ * // Disabled button
+ * <Button title="Submit" disabled onPress={handleSubmit} />
  */
 export const Button = forwardRef<ButtonRef, ButtonBaseProps>((props, ref) => {
   const {
@@ -24,6 +41,8 @@ export const Button = forwardRef<ButtonRef, ButtonBaseProps>((props, ref) => {
     ...rest
   } = props;
 
+  const styles = useButtonStyles();
+
   /**
    * Derives the text style variant based on the button variant.
    */
@@ -35,15 +54,15 @@ export const Button = forwardRef<ButtonRef, ButtonBaseProps>((props, ref) => {
       onPress={onPress}
       disabled={disabled}
       style={[
-        Styles._base,
-        Styles[size as ButtonSize],
-        Styles[variant as ButtonVariant],
-        disabled && Styles._disabled,
+        styles._base,
+        styles[size as ButtonSize],
+        styles[variant as ButtonVariant],
+        disabled && styles._disabled,
         style,
       ]}
       {...rest}
     >
-      <Text style={[Styles._text, Styles[textVariant], textStyle]}>
+      <Text style={[styles._text, styles[textVariant], textStyle]}>
         {title}
       </Text>
     </TouchableOpacity>

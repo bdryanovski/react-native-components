@@ -5,9 +5,9 @@ import { ThemeProvider, useTheme } from '../../src/providers/ThemeProvider';
 
 // Component that demonstrates Card with theme integration
 const ThemedCard = () => {
-  const { theme, changeTheme } = useTheme();
+  const { themeName, setTheme } = useTheme();
 
-  const isDark = theme === 'dark';
+  const isDark = themeName === 'dark';
   const backgroundColor = isDark ? '#1f2937' : '#ffffff';
   const textColor = isDark ? '#f9fafb' : '#111827';
   const subtextColor = isDark ? '#9ca3af' : '#6b7280';
@@ -24,12 +24,12 @@ const ThemedCard = () => {
             Theme Controls
           </Text>
           <Text style={[styles.subtitle, { color: subtextColor }]}>
-            Current theme: {theme}
+            Current theme: {themeName}
           </Text>
           <View style={styles.buttonContainer}>
-            <Button title="Light" onPress={() => changeTheme('light')} />
-            <Button title="Dark" onPress={() => changeTheme('dark')} />
-            <Button title="System" onPress={() => changeTheme('system')} />
+            <Button title="Light" onPress={() => setTheme('light')} />
+            <Button title="Dark" onPress={() => setTheme('dark')} />
+            <Button title="System" onPress={() => setTheme('system')} />
           </View>
         </View>
       </Card>

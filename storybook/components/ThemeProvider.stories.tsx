@@ -1,19 +1,18 @@
 import React from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { ThemeProvider, useTheme } from '../../src/providers/ThemeProvider';
-import type { ThemeVariants } from '../../src/providers/types';
 
 // Example component that uses the theme
 const ThemedComponent = () => {
-  const { theme, changeTheme } = useTheme();
+  const { themeName, setTheme } = useTheme();
 
-  const backgroundColor = theme === 'dark' ? '#1a1a1a' : '#ffffff';
-  const textColor = theme === 'dark' ? '#ffffff' : '#000000';
+  const backgroundColor = themeName === 'dark' ? '#1a1a1a' : '#ffffff';
+  const textColor = themeName === 'dark' ? '#ffffff' : '#000000';
 
   return (
     <View style={[styles.themedContainer, { backgroundColor }]}>
       <Text style={[styles.title, { color: textColor }]}>
-        Current Theme: {theme}
+        Current Theme: {themeName}
       </Text>
       <Text style={[styles.subtitle, { color: textColor }]}>
         The theme changes the appearance of components
@@ -21,13 +20,13 @@ const ThemedComponent = () => {
 
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
-          <Button title="Light Theme" onPress={() => changeTheme('light')} />
+          <Button title="Light Theme" onPress={() => setTheme('light')} />
         </View>
         <View style={styles.button}>
-          <Button title="Dark Theme" onPress={() => changeTheme('dark')} />
+          <Button title="Dark Theme" onPress={() => setTheme('dark')} />
         </View>
         <View style={styles.button}>
-          <Button title="System Theme" onPress={() => changeTheme('system')} />
+          <Button title="System Theme" onPress={() => setTheme('system')} />
         </View>
       </View>
     </View>
@@ -90,8 +89,8 @@ export const SystemTheme = () => (
 export const WithCallback = () => (
   <ThemeProvider
     defaultTheme="light"
-    onThemeChange={(theme: ThemeVariants) => {
-      console.log('Theme changed to:', theme);
+    onThemeChange={(themeName: string) => {
+      console.log('Theme changed to:', themeName);
     }}
   >
     <ThemedComponent />

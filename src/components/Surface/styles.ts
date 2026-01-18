@@ -1,28 +1,30 @@
-import Style from '../../utils/Style';
+import { useThemedStyles } from '../../providers/hooks';
+import type { Theme } from '../../themes/theme.types';
 
-export const DEFAULT_SURFACE = {
-  default_background_color: '#fff',
-  secondary_background_color: '#f0f0f0',
-  transparent_background_color: 'transparent',
+/**
+ * Surface styles using the new theme system
+ */
+export const useSurfaceStyles = () => {
+  return useThemedStyles((theme: Theme) => {
+    const { surface } = theme.components;
+
+    return {
+      base: {
+        borderRadius: surface.borderRadius,
+      },
+
+      /**
+       * Variants
+       */
+      default: {
+        backgroundColor: surface.default.backgroundColor,
+      },
+      secondary: {
+        backgroundColor: surface.secondary.backgroundColor,
+      },
+      transparent: {
+        backgroundColor: surface.transparent.backgroundColor,
+      },
+    };
+  });
 };
-
-export type SurfaceStyleVariables = typeof DEFAULT_SURFACE;
-
-export const Styles = Style.create({
-  base: {},
-
-  /**
-   * Variants
-   */
-
-  default: {
-    backgroundColor: DEFAULT_SURFACE.default_background_color,
-  },
-  secondary: {
-    backgroundColor: DEFAULT_SURFACE.secondary_background_color,
-  },
-
-  transparent: {
-    backgroundColor: DEFAULT_SURFACE.transparent_background_color,
-  },
-});

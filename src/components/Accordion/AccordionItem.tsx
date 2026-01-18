@@ -8,10 +8,27 @@ import {
 import type { ViewRef } from '../../types/general.types';
 import { Collapse } from '../Collapse';
 import { useAccordionContext } from './AccordionContext';
+import { useAccordionStyles } from './style';
 import type { AccordionItemProps } from './type';
 
 export let itemIndexCounter = 0;
 
+/**
+ * AccordionItem component
+ * Uses the theme system for consistent styling.
+ *
+ * @param {React.ReactNode} children - Content to display when expanded
+ * @param {string | React.ReactNode} title - Title/header of the accordion item
+ * @param {Function} onPress - Optional press handler
+ * @param {boolean} isExpanded - Optional controlled expanded state
+ *
+ * @example
+ * <Accordion>
+ *   <AccordionItem title="Section 1">
+ *     <Text>Content here</Text>
+ *   </AccordionItem>
+ * </Accordion>
+ */
 export const AccordionItem = forwardRef<ViewRef, AccordionItemProps>(
   (props, ref) => {
     const {
@@ -24,6 +41,7 @@ export const AccordionItem = forwardRef<ViewRef, AccordionItemProps>(
 
     const { toggleItem, isItemExpanded, animationConfig } =
       useAccordionContext();
+    const styles = useAccordionStyles();
 
     // Assign a unique index to this item
     const itemIndex = useMemo(() => itemIndexCounter++, []);
@@ -45,12 +63,17 @@ export const AccordionItem = forwardRef<ViewRef, AccordionItemProps>(
     );
 
     return (
-      <View ref={ref} style={style}>
-        <TouchableOpacity onPress={handlePress}>
-          <Text>{title}</Text>
+      <View ref={ref} style={[styles.item, style]}>
+        <TouchableOpacity
+          onPress={handlePress}
+          style={[styles.header, isExpanded && styles.headerExpanded]}
+        >
+          <Text style={styles.title}>
+            {typeof title === 'string' ? title : title}
+          </Text>
         </TouchableOpacity>
         <Collapse isExpanded={isExpanded} animationConfig={animationConfig}>
-          {children}
+          <View style={styles.content}>{children}</View>
         </Collapse>
       </View>
     );

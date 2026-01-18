@@ -1,5 +1,6 @@
 import { View } from 'react-native';
 import Svg, { Circle, Defs, Pattern, Rect } from 'react-native-svg';
+import { ThemeProvider } from '../../src/providers/ThemeProvider';
 
 const DottedGridBackground = () => (
   <Svg
@@ -30,6 +31,24 @@ const DottedGridBackground = () => (
   </Svg>
 );
 
+// Global theme switcher for Storybook toolbar
+export const globalTypes = {
+  theme: {
+    name: 'Theme',
+    description: 'Global theme for components',
+    defaultValue: 'light',
+    toolbar: {
+      icon: 'circlehollow',
+      items: [
+        { value: 'light', title: 'Light', icon: 'sun' },
+        { value: 'dark', title: 'Dark', icon: 'moon' },
+        { value: 'system', title: 'System', icon: 'browser' },
+      ],
+      dynamicTitle: true,
+    },
+  },
+};
+
 /** @type{import("@storybook/react").Preview} */
 const preview = {
   parameters: {
@@ -42,14 +61,21 @@ const preview = {
   },
 
   decorators: [
-    (Story, { parameters }) => (
-      <View style={{ flex: 1 }}>
-        {parameters.noBackground !== true && <DottedGridBackground />}
-        <View style={{ flex: 1, padding: 8 }}>
-          <Story />
-        </View>
-      </View>
-    ),
+    (Story, { parameters, globals }) => {
+      // Get theme from globals (Storybook toolbar) or default to 'light'
+      const theme = globals.theme || 'light';
+
+      return (
+        <ThemeProvider theme={theme}>
+          <View style={{ flex: 1 }}>
+            {parameters.noBackground !== true && <DottedGridBackground />}
+            <View style={{ flex: 1, padding: 8 }}>
+              <Story />
+            </View>
+          </View>
+        </ThemeProvider>
+      );
+    },
   ],
 };
 
